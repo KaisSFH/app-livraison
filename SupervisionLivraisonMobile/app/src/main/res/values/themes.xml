@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SupervisionLivraisonMobile" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="itemActiveIndicatorStyle">@style/CustomActiveIndicator</item>
+    </style>
+
+    <style name="CustomActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#1A004A99</item>
+        <item name="android:width">87dp</item>
+        <item name="android:height">53dp</item>
+        <item name="marginHorizontal">0dp</item>
+    </style>
+
+    <style name="Theme.SupervisionLivraisonMobile" parent="Base.Theme.SupervisionLivraisonMobile" />
+</resources>

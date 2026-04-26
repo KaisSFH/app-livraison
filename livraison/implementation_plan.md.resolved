@@ -1,0 +1,50 @@
+# Plan d'implémentation - Backend Supervision des Livraisons
+
+Ce plan détaille la création de toute l'architecture Spring Boot pour l'application "Supervision des livraisons" directement dans le dossier du projet (`livraison`), en respectant strictement le cahier des charges.
+
+## User Review Required
+> [!IMPORTANT]
+> Les Entités (`entity`) ont déjà été générées. Ce plan va s'occuper de créer tous les dossiers et fichiers manquants pour que l'API soit fonctionnelle. Veuillez approuver ce plan pour que je lance la génération des fichiers.
+
+## Proposed Changes
+
+### [Dossier DTO (Data Transfer Objects)]
+Création des objets pour la communication entre l'API et l'application mobile (Retrofit).
+#### [NEW] [LoginRequest.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/dto/LoginRequest.java)
+#### [NEW] [LoginResponse.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/dto/LoginResponse.java)
+#### [NEW] [LivraisonDto.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/dto/LivraisonDto.java)
+#### [NEW] [UpdateEtatRequest.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/dto/UpdateEtatRequest.java)
+#### [NEW] [SyncLivraisonRequest.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/dto/SyncLivraisonRequest.java)
+#### [NEW] [MessageRequest.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/dto/MessageRequest.java)
+
+---
+### [Dossier Repositories]
+Création des interfaces Spring Data JPA pour l'accès à la base de données MySQL.
+#### [NEW] [ArticleRepository.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/repository/ArticleRepository.java)
+#### [NEW] [ClientRepository.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/repository/ClientRepository.java)
+#### [NEW] [CommandeRepository.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/repository/CommandeRepository.java)
+#### [NEW] [LigneCommandeRepository.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/repository/LigneCommandeRepository.java)
+#### [NEW] [LivraisonRepository.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/repository/LivraisonRepository.java)
+#### [NEW] [PersonnelRepository.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/repository/PersonnelRepository.java)
+#### [NEW] [PosteRepository.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/repository/PosteRepository.java)
+#### [NEW] [MessageRepository.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/repository/MessageRepository.java)
+
+---
+### [Dossier Services]
+Création de la logique métier (authentification, gestion des livraisons, messagerie et statistiques).
+#### [NEW] [AuthService.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/service/AuthService.java)
+#### [NEW] [LivraisonService.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/service/LivraisonService.java)
+#### [NEW] [MessageService.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/service/MessageService.java)
+#### [NEW] [DashboardService.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/service/DashboardService.java)
+
+---
+### [Dossier Controllers]
+Exposition des API REST qui seront consommées par l'application Android (Retrofit) ou par Postman.
+#### [NEW] [AuthController.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/controller/AuthController.java)
+#### [NEW] [LivraisonController.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/controller/LivraisonController.java)
+#### [NEW] [MessageController.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/controller/MessageController.java)
+#### [NEW] [DashboardController.java](file:///C:/Users/MSI GF63 I5/.gemini/antigravity/scratch/SupervisionLivraison/livraison/src/main/java/com/example/livraison/controller/DashboardController.java)
+
+## Verification Plan
+1. **Compilation** : Après avoir créé ces fichiers, nous lancerons la commande `mvn clean install` ou `mvn spring-boot:run` pour s'assurer que le projet compile sans erreur.
+2. **Test manuel (Prochaine étape)** : Utiliser Postman (ou des commandes `curl` que je te fournirai) pour tester `/api/auth/login` et `/api/livraisons/controleur`.
