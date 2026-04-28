@@ -30,6 +30,11 @@ public class LivraisonController {
         return livraisonService.getMyDeliveries(id);
     }
 
+    @GetMapping
+    public List<LivraisonDto> getAllDeliveries() {
+        return livraisonService.getAllDeliveries();
+    }
+
     @PutMapping("/{nocde}/status")
     public ResponseEntity<?> updateStatus(@PathVariable Integer nocde, @RequestBody UpdateStatusRequest request) {
         boolean updated = livraisonService.updateStatus(nocde, request);

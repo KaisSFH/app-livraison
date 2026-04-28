@@ -49,6 +49,11 @@ public class LivraisonService {
                 .stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
+    public List<LivraisonDto> getAllDeliveries() {
+        return livraisonRepository.findAll()
+                .stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
     private LivraisonDto convertToDto(LivraisonCom entity) {
         LivraisonDto dto = new LivraisonDto();
         dto.setNocde(entity.getNocde());

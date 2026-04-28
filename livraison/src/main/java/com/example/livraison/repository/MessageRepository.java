@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface MessageRepository extends JpaRepository<Message, Integer> {
     List<Message> findByDestinataireIdpers(Integer destinataireId);
+    List<Message> findByExpediteurIdpersOrDestinataireIdpersOrderByDateMessageAsc(Integer expediteurId, Integer destinataireId);
 }

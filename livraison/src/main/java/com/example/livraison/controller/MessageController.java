@@ -33,4 +33,9 @@ public class MessageController {
     public ResponseEntity<List<Message>> getMessagesForControleur(@PathVariable Integer idControleur) {
         return ResponseEntity.ok(messageService.getMessagesForUser(idControleur));
     }
+
+    @GetMapping("/conversation/{userId}")
+    public ResponseEntity<List<Message>> getConversation(@PathVariable Integer userId) {
+        return ResponseEntity.ok(messageService.getConversation(userId));
+    }
 }

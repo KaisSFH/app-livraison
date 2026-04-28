@@ -41,7 +41,15 @@ public class MessageService {
         
         if (request.getDestinataireId() != null) {
             Optional<Personnel> dest = personnelRepository.findById(request.getDestinataireId());
-            dest.ifPresent(msg::setDestinataire);
+            if (dest.isPresent()) {
+                msg.setDestinataire(dest.get());
+            } else {
+                // Si l'ID par défaut n'est pas trouvé, envoyer à l'admin
+                personnelRepository.findByLogin("admin").ifPresent(msg::setDestinataire);
+            }
+        } else {
+            // Par défaut envoyer au contrôleur (admin)
+            personnelRepository.findByLogin("admin").ifPresent(msg::setDestinataire);
         }
 
         if (request.getNocde() != null) {
@@ -54,5 +62,9 @@ public class MessageService {
 
     public List<Message> getMessagesForUser(Integer userId) {
         return messageRepository.findByDestinataireIdpers(userId);
+    }
+
+    public List<Message> getConversation(Integer userId) {
+        return messageRepository.findByExpediteurIdpersOrDestinataireIdpersOrderByDateMessageAsc(userId, userId);
     }
 }
